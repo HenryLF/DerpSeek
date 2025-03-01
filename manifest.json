@@ -2,25 +2,32 @@
     "manifest_version": 2,
     "name": "DerpSeek",
     "version": "1.0",
-  
     "description": "Ajoute une icône à la barre d'outil pour une action navigateur. Cliquez sur le bouton pour choisir une bête. Le contenu de l'onglet actif sera alors remplacé par une image de la bête choisie. Voir https://developer.mozilla.org/fr/Add-ons/WebExtensions/Examples#beastify",
-    "homepage_url": "https://github.com/mdn/webextensions-examples/tree/master/beastify",
+    "homepage_url": "https://github.com/HenryLF/DerpSeek",
     "icons": {
-      "48": "icons/beasts-48.png"
+        "48": "icons/derp_48.png"
     },
-  
-    "permissions": ["activeTab"],
-  
+    "permissions": [
+        "activeTab"
+    ],
     "browser_action": {
-      "default_icon": "icons/beasts-32.png",
-      "default_title": "Beastify",
-      "default_popup": "popup/choose_beast.html"
+        "default_icon": "icons/derp_48.png",
+        "default_title": "DerpSeek",
+        "default_popup": "popup/popup.html"
     },
-  
     "web_accessible_resources": [
-      "beasts/frog.jpg",
-      "beasts/turtle.jpg",
-      "beasts/snake.jpg"
+        "icons/derp_48.png",
+        "icons/derp_bck.svg",
+        "content/deepseek.css"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "*://chat.deepseek.com/*"
+            ],
+            "js": [
+                "content/deepseek.js"
+            ]
+        }
     ]
-  }
-  
+}

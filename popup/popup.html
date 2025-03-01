@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  
+  <body class="flex">
+    <header>Prompty Derpy Fuck</header>
+    <div id="container" class="flex">
+        <div id ="new-prompt" class="hover flex">
+            <span>+</span>
+            <span>New Prompt</span>
+        </div>
+    </div>
+    <template id="prompt-tmpl">
+      <div class="prompt flex">
+        <input type="text" class="name" disabled="true"></span>
+        <textarea class="content" disabled="true"></textarea>
+        <div class="flex-row">
+          <button class="hover edit">Edit</button>
+          <button class="hover copy">Copy</button>
+          <button class="hover delete">Delete</button>
+        </div>
+      </div>
+    </template>
+    <script src="./popup.js"></script>
+  </body>
+</html>

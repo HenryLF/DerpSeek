@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(43, 0, 160);
+  --font-size: calc(100%);
+}
+* {
+  font-size: 1.3rem;
+  color: gold;
+  font-family: "Noto Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+}
+header {
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-align: center;
+  width: 98%;
+}
+#container {
+  width: 98%;
+}
+.flex,
+.flex-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+.flex {
+  flex-direction: column;
+}
+.prompt,
+#new-prompt {
+  width: 70%;
+  border: 1px solid black;
+  border-radius: 2rem;
+  margin: 2rem 0;
+  justify-content: space-between;
+}
+.prompt > *,
+#new-prompt > * {
+  margin: 0.5rem;
+}
+
+.hover {
+  transition-property: background-color color;
+  transition-duration: 0.5s;
+  background-color: purple;
+  color: gold;
+}
+.hover:hover {
+  background-color: rgba(0, 0, 255, 0.562);
+  color: white;
+}
+
+.content {
+  width: 90%;
+  resize: vertical;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+.name {
+  width: 80%;
+  text-align: center;
+  border-radius: 0.5rem;
+}
+.content,
+.name {
+  background-color: black;
+  color: greenyellow;
+  border-color: rgb(0, 0, 0);
+  font-size: 1.2rem;
+  font-family: "Roboto Mono", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+button {
+  font-size: 1.3rem;
+  padding: 0.2rem;
+  border-radius: 0.5rem;
+}
