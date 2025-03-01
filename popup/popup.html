@@ -5,17 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="popup.css" />
+    <script src="./default.js"></script>
   </head>
 
   <body class="flex">
     <header>Prompty Derpy Fuck</header>
-    <input type="text" id="filter" placeholder="Filter..." />
+    <div class="flex-row">
+      <input type="text" id="filter" placeholder="Filter..." />
+      <div>
+        <input
+          type="checkbox"
+          id="show-default"
+          checked="true"
+          name="show-default"
+        />
+        <label for="show-default">Show default</label>
+      </div>
+    </div>
     <div id="container" class="flex">
       <div id="new-prompt" class="hover flex">
         <span>+</span>
         <span>New Prompt</span>
       </div>
     </div>
+
     <template id="prompt-tmpl">
       <div class="prompt flex">
         <input type="text" class="name" disabled="true" />

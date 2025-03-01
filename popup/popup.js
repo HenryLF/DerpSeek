@@ -1,19 +1,17 @@
 const promptTMPL = document.getElementById("prompt-tmpl").content;
 const container = document.getElementById("container");
 const newPrompt = document.getElementById("new-prompt");
-
-const exemplePrompt = {
-  name: "Title",
-  content: "prompt",
-};
+const showDefault = document.getElementById("show-default");
 
 window.addEventListener("load", loadPrompt);
 newPrompt.addEventListener("click", newPromptHandle);
 document.getElementById("filter").addEventListener("input", filterHandle);
+showDefault.addEventListener("click", showDefaultHandle);
 
 function loadPrompt() {
   let savedPrompt = localStorage.getItem("Prompt");
   populateWindow(JSON.parse(savedPrompt));
+  populateWindow(defaultPrompt);
 }
 
 function savePrompt() {
@@ -39,9 +37,16 @@ function populateWindow(prompts, editable = false) {
     let div = promptTMPL.cloneNode(true);
     div.querySelector(".name").value = prompt.name;
     div.querySelector(".content").value = prompt.content;
-    div.querySelector(".edit").addEventListener("click", editHandle);
-    div.querySelector(".copy").addEventListener("click", copyHandle);
     div.querySelector(".delete").addEventListener("click", deleteHandle);
+
+    if (!prompt.userPrompt) {
+      div.querySelector(".prompt").classList.add("default");
+      div.querySelector(".edit").remove();
+      div.querySelector(".delete").remove();
+    } else {
+      div.querySelector(".edit").addEventListener("click", editHandle);
+      div.querySelector(".copy").addEventListener("click", copyHandle);
+    }
     editable ? div.querySelector(".edit").click() : null;
     container.insertBefore(div, newPrompt);
   }
@@ -80,5 +85,11 @@ function filterHandle() {
     } else {
       prompt.style.display = "none";
     }
+  });
+}
+
+function showDefaultHandle() {
+  Array.from(document.querySelectorAll(".default")).forEach((prompt) => {
+    prompt.style.display = this.checked ? "flex" : "none";
   });
 }

@@ -97,6 +97,9 @@ header {
   font-weight: 400;
   font-style: normal;
 }
+.default > .content,.default > .name{
+  background-color: rgb(70, 70, 70);
+}
 button {
   font-size: 1.3rem;
   padding: 0.2rem;
