@@ -3,15 +3,14 @@ window.addEventListener("load", initExtension);
 async function initExtension() {
   await delayMS(1000);
 
-  document.body.style.backgroundImage =
-    browser.runtime.getURL("icons/derp_bck.svg");
+  const mainLogos = document.querySelectorAll("svg");
+  Array.from(mainLogos).forEach((log) => {
+    log.parentNode.replaceChild(randomDerp(), log);
+  });
 
-  const derpBck = new Image();
-  const mainLogo = document.querySelector(".c7e7df4d");
+  document.querySelector(".c7e7df4d").textContent = document.querySelector(".c7e7df4d").textContent.replace("DeepSeek","DerpSearch") 
+  document.querySelector(".c7e7df4d").prepend(randomDerp())
   const catchPhrase = document.querySelector(".a8d0e1d3");
-  derpBck.src = browser.runtime.getURL("icons/derp_48.png");
-  mainLogo.textContent = mainLogo.textContent.replace("Deep", "Derp");
-  mainLogo.insertBefore(derpBck, mainLogo.firstChild);
   catchPhrase.textContent = shuffleString(catchPhrase.textContent);
 }
 
@@ -32,6 +31,14 @@ function shuffleString(s) {
   }
   return out.join("");
 }
+
+function randomDerp(){
+  const derpIMG = new Image();
+  derpIMG.src = browser.runtime.getURL( `icons/derp${randInt(6)+1}.png`);
+  derpIMG.className = "derp"
+  return derpIMG
+}
+
 //return a random int in [0,N[
 function randInt(N) {
   if (N < 0) {

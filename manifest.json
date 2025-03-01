@@ -16,9 +16,12 @@
         "default_popup": "popup/popup.html"
     },
     "web_accessible_resources": [
-        "icons/derp_48.png",
-        "icons/derp_bck.svg",
-        "content/deepseek.css"
+        "icons/derp1.png",
+        "icons/derp2.png",
+        "icons/derp3.png",
+        "icons/derp4.png",
+        "icons/derp5.png",
+        "icons/derp6.png"
     ],
     "content_scripts": [
         {
@@ -27,6 +30,9 @@
             ],
             "js": [
                 "content/deepseek.js"
+            ],
+            "css": [
+                "content/deepseek.css"
             ]
         }
     ]
