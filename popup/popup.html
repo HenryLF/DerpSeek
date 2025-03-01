@@ -6,18 +6,19 @@
     <title>Document</title>
     <link rel="stylesheet" href="popup.css" />
   </head>
-  
+
   <body class="flex">
     <header>Prompty Derpy Fuck</header>
+    <input type="text" id="filter" placeholder="Filter..." />
     <div id="container" class="flex">
-        <div id ="new-prompt" class="hover flex">
-            <span>+</span>
-            <span>New Prompt</span>
-        </div>
+      <div id="new-prompt" class="hover flex">
+        <span>+</span>
+        <span>New Prompt</span>
+      </div>
     </div>
     <template id="prompt-tmpl">
       <div class="prompt flex">
-        <input type="text" class="name" disabled="true"></span>
+        <input type="text" class="name" disabled="true" />
         <textarea class="content" disabled="true"></textarea>
         <div class="flex-row">
           <button class="hover edit">Edit</button>
