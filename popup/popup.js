@@ -2,12 +2,14 @@ const promptTMPL = document.getElementById("prompt-tmpl").content;
 const container = document.getElementById("container");
 const newPrompt = document.getElementById("new-prompt");
 
-let exemplePrompt = {
-  name: "PlaceHolder",
-  content: "PlaceHolder",
+const exemplePrompt = {
+  name: "Title",
+  content: "prompt",
 };
 
 window.addEventListener("load", loadPrompt);
+newPrompt.addEventListener("click", newPromptHandle);
+document.getElementById("filter").addEventListener("input", filterHandle);
 
 function loadPrompt() {
   let savedPrompt = localStorage.getItem("Prompt");
@@ -25,12 +27,11 @@ function savePrompt() {
   localStorage.setItem("Prompt", JSON.stringify(savedPrompt));
 }
 
-newPrompt.addEventListener("click", newPromptHandle);
 function newPromptHandle() {
-  populateWindow([exemplePrompt]);
+  populateWindow([exemplePrompt], true);
 }
 
-function populateWindow(prompts) {
+function populateWindow(prompts, editable = false) {
   if (prompts === null) {
     return;
   }
@@ -41,6 +42,7 @@ function populateWindow(prompts) {
     div.querySelector(".edit").addEventListener("click", editHandle);
     div.querySelector(".copy").addEventListener("click", copyHandle);
     div.querySelector(".delete").addEventListener("click", deleteHandle);
+    editable ? div.querySelector(".edit").click() : null;
     container.insertBefore(div, newPrompt);
   }
 }
@@ -66,4 +68,17 @@ function deleteHandle() {
   this.parentNode.parentNode.remove();
   savePrompt();
 }
-console.log(window);
+
+function filterHandle() {
+  let pat = new RegExp(this.value.trim(), "gi");
+  Array.from(document.querySelectorAll(".prompt")).forEach((prompt) => {
+    if (
+      prompt.querySelector(".name").value.match(pat) ||
+      prompt.querySelector(".content").value.match(pat)
+    ) {
+      prompt.style.display = "flex";
+    } else {
+      prompt.style.display = "none";
+    }
+  });
+}
