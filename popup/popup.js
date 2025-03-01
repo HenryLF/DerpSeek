@@ -9,17 +9,30 @@ document.getElementById("filter").addEventListener("input", filterHandle);
 showDefault.addEventListener("click", showDefaultHandle);
 
 function loadPrompt() {
+  clearPrompt()
   let savedPrompt = localStorage.getItem("Prompt");
   populateWindow(JSON.parse(savedPrompt));
   populateWindow(defaultPrompt);
 }
 
+function clearPrompt() {
+  let k = Array.from(document.querySelectorAll(".prompt"))
+  if (k === null)return
+  k.forEach((e) =>
+    container.remove(e)
+  );
+}
+
 function savePrompt() {
   let savedPrompt = new Array();
   Array.from(document.querySelectorAll(".prompt")).forEach((div) => {
+    if (div.classList.contains("default")) {
+      return;
+    }
     savedPrompt.push({
       name: div.querySelector(".name").value,
       content: div.querySelector(".content").value,
+      userPrompt: true,
     });
   });
   localStorage.setItem("Prompt", JSON.stringify(savedPrompt));
@@ -43,6 +56,9 @@ function populateWindow(prompts, editable = false) {
       div.querySelector(".prompt").classList.add("default");
       div.querySelector(".edit").remove();
       div.querySelector(".delete").remove();
+      div.querySelector(".prompt").style.display = showDefault.checked
+        ? "flex"
+        : "none";
     } else {
       div.querySelector(".edit").addEventListener("click", editHandle);
       div.querySelector(".copy").addEventListener("click", copyHandle);

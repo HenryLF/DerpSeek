@@ -2,14 +2,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
 
 body {
+  min-width: 500px;
   display: flex;
   flex-direction: column;
-  background-color: rgb(43, 0, 160);
-  --font-size: calc(100%);
+  background: linear-gradient(
+    0deg,
+    rgb(72, 2, 138) 0%,
+    rgba(63, 52, 150, 1) 100%
+  );
+  background-attachment: fixed;
+
+  overflow-x: hidden;
+  --font-size: clamp(8px, 3vw, 2rem);
 }
 /* General classes */
 * {
-  font-size: 1.3rem;
+  font-size: calc(var(--font-size));
   color: gold;
   font-family: "Noto Sans", serif;
   font-optical-sizing: auto;
@@ -28,7 +36,7 @@ body {
 }
 
 .hover {
-  transition-property: background-color color;
+  transition-property: background-color, color;
   transition-duration: 0.5s;
   background-color: purple;
   color: gold;
@@ -38,11 +46,10 @@ body {
   color: white;
 }
 
-
 /* Targeted by id */
 
 header {
-  font-size: 1.5rem;
+  font-size: calc(1.5 * var(--font-size));
   font-weight: 800;
   text-align: center;
   width: 98%;
@@ -50,13 +57,16 @@ header {
 #container {
   width: 98%;
 }
-#filter{
+#filter {
   background-color: rgba(128, 128, 128, 0.4);
-  margin: .5rem;
-  font-size: .8rem;
+  margin: 0.5rem;
+  font-size: calc(0.8 * var(--font-size));
   width: 70%;
   text-align: center;
   border-radius: 1rem;
+}
+label {
+  font-size: calc(0.6 * var(--font-size));
 }
 
 /* Prompt */
@@ -74,12 +84,12 @@ header {
   margin: 0.5rem;
 }
 
-
 .content {
   width: 90%;
   resize: vertical;
   padding: 0.5rem;
   border-radius: 1rem;
+  font-size: calc(0.8 * var(--font-size));
 }
 .name {
   width: 80%;
@@ -91,17 +101,17 @@ header {
   background-color: black;
   color: greenyellow;
   border-color: rgb(0, 0, 0);
-  font-size: 1.2rem;
   font-family: "Roboto Mono", serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
 }
-.default > .content,.default > .name{
+.default > .content,
+.default > .name {
   background-color: rgb(70, 70, 70);
 }
 button {
-  font-size: 1.3rem;
+  font-size: calc(var(--font-size));
   padding: 0.2rem;
   border-radius: 0.5rem;
 }

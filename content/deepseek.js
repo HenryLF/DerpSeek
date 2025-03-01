@@ -1,7 +1,8 @@
-window.addEventListener("load", initExtension);
+
+
+setInterval(initExtension,3000)
 
 async function initExtension() {
-  await delayMS(1000);
 
   const mainLogos = document.querySelectorAll("svg");
   Array.from(mainLogos).forEach((log) => {
