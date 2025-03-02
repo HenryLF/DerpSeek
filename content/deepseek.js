@@ -1,18 +1,17 @@
-
-
-setInterval(initExtension,3000)
+setInterval(initExtension, 3000);
 
 async function initExtension() {
-
   const mainLogos = document.querySelectorAll("svg");
   Array.from(mainLogos).forEach((log) => {
     log.parentNode.replaceChild(randomDerp(), log);
   });
-
-  document.querySelector(".c7e7df4d").textContent = document.querySelector(".c7e7df4d").textContent.replace("DeepSeek","DerpSearch") 
-  document.querySelector(".c7e7df4d").prepend(randomDerp())
+  let mainText = document.querySelector(".c7e7df4d");
+  if (mainText != null) {
+    mainText.textContent = mainText.textContent.replace("DeepSeek", "DerpSearch");
+    mainText.prepend(randomDerp());
+  }
   const catchPhrase = document.querySelector(".a8d0e1d3");
-  catchPhrase.textContent = shuffleString(catchPhrase.textContent);
+  catchPhrase? catchPhrase.textContent = shuffleString(catchPhrase.textContent) : null;
 }
 
 function delayMS(d) {
@@ -33,11 +32,11 @@ function shuffleString(s) {
   return out.join("");
 }
 
-function randomDerp(){
+function randomDerp() {
   const derpIMG = new Image();
-  derpIMG.src = browser.runtime.getURL( `icons/derp${randInt(6)+1}.png`);
-  derpIMG.className = "derp"
-  return derpIMG
+  derpIMG.src = browser.runtime.getURL(`icons/derp${randInt(6) + 1}.png`);
+  derpIMG.className = "derp";
+  return derpIMG;
 }
 
 //return a random int in [0,N[

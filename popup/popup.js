@@ -8,22 +8,20 @@ newPrompt.addEventListener("click", newPromptHandle);
 document.getElementById("filter").addEventListener("input", filterHandle);
 showDefault.addEventListener("click", showDefaultHandle);
 
-function loadPrompt() {
-  clearPrompt()
-  let savedPrompt = localStorage.getItem("Prompt");
-  populateWindow(JSON.parse(savedPrompt));
+async function loadPrompt() {
+  clearPrompt();
+  let savedPrompt = await browser.storage.local.get("savedPrompt");
+  populateWindow(savedPrompt.savedPrompt);
   populateWindow(defaultPrompt);
 }
 
 function clearPrompt() {
-  let k = Array.from(document.querySelectorAll(".prompt"))
-  if (k === null)return
-  k.forEach((e) =>
-    container.remove(e)
-  );
+  let k = Array.from(document.querySelectorAll(".prompt"));
+  if (k === null) return;
+  k.forEach((e) => container.remove(e));
 }
 
-function savePrompt() {
+async function savePrompt() {
   let savedPrompt = new Array();
   Array.from(document.querySelectorAll(".prompt")).forEach((div) => {
     if (div.classList.contains("default")) {
@@ -35,7 +33,7 @@ function savePrompt() {
       userPrompt: true,
     });
   });
-  localStorage.setItem("Prompt", JSON.stringify(savedPrompt));
+  await browser.storage.local.set({ savedPrompt });
 }
 
 function newPromptHandle() {
@@ -43,9 +41,7 @@ function newPromptHandle() {
 }
 
 function populateWindow(prompts, editable = false) {
-  if (prompts === null) {
-    return;
-  }
+  console.log(prompts)
   for (let prompt of prompts) {
     let div = promptTMPL.cloneNode(true);
     div.querySelector(".name").value = prompt.name;
