@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "DerpSeek",
-    "version": "1.0",
+    "version": "1.11",
     "description": "A clipboard you can acess on every website, that have some side effects on LLM.",
     "homepage_url": "https://github.com/HenryLF/DerpSeek",
     "icons": {
@@ -27,7 +27,7 @@
     ],
     "browser_specific_settings": {
         "gecko": {
-            "id": "henrylf@protonmail.com",
+            "id": "{07773f0a-4ef3-477c-990c-073a627c5d0e}",
             "strict_min_version": "58.0"
         }
     },
