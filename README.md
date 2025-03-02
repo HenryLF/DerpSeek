@@ -6,9 +6,14 @@ This utility was design to hold LLM prompts/ruleset that you'll tend to reuse of
  
 Ahh also (as a feature) maybe your chabot page will be a lil' derpy :
 
-![DerpSearch loggin page](doc/image.png)
+![image](https://github.com/user-attachments/assets/2add90ca-b73e-40f3-99fc-4b6a97b27f3a)
+
 
 For now the derped chatbots are :
     - DeepSeek
 
-## Never give you up, Never let you down
+## Features
+
+- Persistent storage across website and sessions;
+- Filter prompt using Regular Expression matching;
+- Ships with default prompts adapted from different sources or written by myself. 
