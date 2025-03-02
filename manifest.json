@@ -22,7 +22,8 @@
         "icons/derp3.png",
         "icons/derp4.png",
         "icons/derp5.png",
-        "icons/derp6.png"
+        "icons/derp6.png",
+        "icons/derp7.png"
     ],
     "browser_specific_settings": {
         "gecko": {

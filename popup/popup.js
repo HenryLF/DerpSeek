@@ -41,7 +41,7 @@ function newPromptHandle() {
 }
 
 function populateWindow(prompts, editable = false) {
-  console.log(prompts)
+  if (!prompts) return;
   for (let prompt of prompts) {
     let div = promptTMPL.cloneNode(true);
     div.querySelector(".name").value = prompt.name;
@@ -69,11 +69,11 @@ function editHandle() {
   const nameArea = this.parentNode.parentNode.querySelector(".name");
   textArea.disabled = !textArea.disabled;
   nameArea.disabled = !nameArea.disabled;
-  this.textContent = textArea.disabled ? "Edit" : "Save";
   this.classList.toggle("edit-mode");
   textArea.classList.toggle("edit-mode");
   nameArea.classList.toggle("edit-mode");
   textArea.disabled ? savePrompt() : null;
+  this.textContent = textArea.disabled ? "Edit" : "Save";
 }
 
 function copyHandle() {

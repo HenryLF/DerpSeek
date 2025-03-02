@@ -34,7 +34,7 @@ function shuffleString(s) {
 
 function randomDerp() {
   const derpIMG = new Image();
-  derpIMG.src = browser.runtime.getURL(`icons/derp${randInt(6) + 1}.png`);
+  derpIMG.src = browser.runtime.getURL(`icons/derp${randInt(7) + 1}.png`);
   derpIMG.className = "derp";
   return derpIMG;
 }
