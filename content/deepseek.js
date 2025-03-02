@@ -1,4 +1,5 @@
-setInterval(initExtension, 3000);
+initExtension()
+setInterval(initExtension, 10_000);
 
 async function initExtension() {
   const mainLogos = document.querySelectorAll("svg");
@@ -34,7 +35,7 @@ function shuffleString(s) {
 
 function randomDerp() {
   const derpIMG = new Image();
-  derpIMG.src = browser.runtime.getURL(`icons/derp${randInt(7) + 1}.png`);
+  derpIMG.src = browser.runtime.getURL(`icons/derp${randInt(8) + 1}.png`);
   derpIMG.className = "derp";
   return derpIMG;
 }
